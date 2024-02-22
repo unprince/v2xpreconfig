@@ -13,7 +13,7 @@ class Asn1(object):
         self._obj = None
         self._codec_xer = None
         self._codec_jer = None
-        self._codec_ger = None
+        self._codec_gser = None
         self._codec_uper = None
         self._indent = 2
 
@@ -33,10 +33,10 @@ class Asn1(object):
         return self._codec_jer
 
     @property
-    def codec_ger(self):
-        if self._codec_ger is None:
-            self._codec_ger = asn1tools.compile_files(self._fname, codec='gser')
-        return self._codec_ger
+    def codec_gser(self):
+        if self._codec_gser is None:
+            self._codec_gser = asn1tools.compile_files(self._fname, codec='gser')
+        return self._codec_gser
 
     @property
     def codec_uper(self):
@@ -47,8 +47,8 @@ class Asn1(object):
     def decode(self, rule, infile):
         if rule == 'xer':
             self._obj = self.codec_xer.decode(self._pdu, infile)
-        elif rule == 'ger':
-            self._obj = self.codec_ger.decode(self._pdu, infile)
+        elif rule == 'gser':
+            self._obj = self.codec_gser.decode(self._pdu, infile)
         elif rule == 'jer':
             self._obj = self.codec_jer.decode(self._pdu, infile)
         elif rule == 'uper':
@@ -62,9 +62,9 @@ class Asn1(object):
         if rule == 'xer':
             indent = None if self._indent == 0 else self._indent
             obj = self.codec_xer.encode(self._pdu, self._obj, indent=indent)
-        elif rule == 'ger':
+        elif rule == 'gser':
             indent = None if self._indent == 0 else self._indent
-            obj = self.codec_ger.encode(self._pdu, self._obj, indent=indent)
+            obj = self.codec_gser.encode(self._pdu, self._obj, indent=indent)
         elif rule == 'jer':
             indent = None if self._indent == 0 else ' ' * self._indent
             obj = self.codec_jer.encode(self._pdu, self._obj, indent=indent)
@@ -80,7 +80,7 @@ class Asn1(object):
                 print(obj.decode())
 
 def create_parser():
-    rules=('xer', 'jer', 'ger', 'uper')
+    rules=('xer', 'jer', 'gser', 'uper')
     indent=('0', '2', '4')
     p = OptionParser(usage='v2xpreconfig [Options] <infile> [outfile]')
     p.add_option('-i', '--in-rule', dest='in_rule', 
