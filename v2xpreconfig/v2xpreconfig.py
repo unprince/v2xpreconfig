@@ -82,7 +82,7 @@ class Asn1(object):
 def create_parser():
     rules=('xer', 'jer', 'ger', 'uper')
     indent=('0', '2', '4')
-    p = OptionParser(usage='v2x-preconfig [Options] <infile> [outfile]')
+    p = OptionParser(usage='v2xpreconfig [Options] <infile> [outfile]')
     p.add_option('-i', '--in-rule', dest='in_rule', 
         help='Options: {}, default: {}. Specifie the input file encoding rules.'.format(', '.join(rules), rules[0]),
         choices=rules, default=rules[0]
