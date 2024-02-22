@@ -9,7 +9,6 @@ class Asn1(object):
     def __init__(self):
         self._cwd = os.path.dirname(os.path.realpath(__file__))
         self._fname = os.path.join(self._cwd, 'v2x_r14_preconfig.asn')
-        self._cache = os.path.join(self._cwd, '__asn1cache__')
         self._pdu = 'SL-V2X-Preconfiguration-r14'
         self._obj = None
         self._codec_xer = None
@@ -24,25 +23,25 @@ class Asn1(object):
     @property
     def codec_xer(self):
         if self._codec_xer is None:
-            self._codec_xer = asn1tools.compile_files(self._fname, codec='xer', cache_dir=self._cache)
+            self._codec_xer = asn1tools.compile_files(self._fname, codec='xer')
         return self._codec_xer
 
     @property
     def codec_jer(self):
         if self._codec_jer is None:
-            self._codec_jer = asn1tools.compile_files(self._fname, codec='jer', cache_dir=self._cache)
+            self._codec_jer = asn1tools.compile_files(self._fname, codec='jer')
         return self._codec_jer
 
     @property
     def codec_ger(self):
         if self._codec_ger is None:
-            self._codec_ger = asn1tools.compile_files(self._fname, codec='ger', cache_dir=self._cache)
+            self._codec_ger = asn1tools.compile_files(self._fname, codec='ger')
         return self._codec_ger
 
     @property
     def codec_uper(self):
         if self._codec_uper is None:
-            self._codec_uper = asn1tools.compile_files(self._fname, codec='uper', cache_dir=self._cache)
+            self._codec_uper = asn1tools.compile_files(self._fname, codec='uper')
         return self._codec_uper
         
     def decode(self, rule, infile):
