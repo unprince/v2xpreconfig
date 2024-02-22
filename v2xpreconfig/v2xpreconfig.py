@@ -35,7 +35,7 @@ class Asn1(object):
     @property
     def codec_ger(self):
         if self._codec_ger is None:
-            self._codec_ger = asn1tools.compile_files(self._fname, codec='ger')
+            self._codec_ger = asn1tools.compile_files(self._fname, codec='gser')
         return self._codec_ger
 
     @property
