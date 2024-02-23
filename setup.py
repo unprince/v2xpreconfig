@@ -7,7 +7,7 @@ import re
 
 def find_version():
     return re.search(r"^__version__ = '(.*)'$",
-                     open('v2xpreconfig/__init__.py', 'r').read(),
+                     open('v2xpreconfig/v2xpreconfig.py', 'r').read(),
                      re.MULTILINE).group(1)
 
 setup(

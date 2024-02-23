@@ -4,6 +4,7 @@ from optparse import OptionParser
 # https://asn1tools.readthedocs.io/en/latest
 import asn1tools
 
+__version__ = '1.0.0'
 
 class Asn1(object):
     def __init__(self):
