@@ -21,13 +21,14 @@ Usage: v2xpreconfig [Options] <infile> [outfile]
 Options:
   -h, --help            show this help message and exit
   -i IN_RULE, --in-rule=IN_RULE
-                        Specifie the input file encoding rules. Options: xer,
-                        jer, gser, uper, default: xer.
+                        Specifie the input file encoding rules. Options: uper,
+                        xer, jer, gser. default: uper.
   -o OUT_RULE, --out-rule=OUT_RULE
-                        Specifie the output file encoding rules. Options: xer,
-                        jer, gser, uper, default: uper.
+                        Specifie the output file encoding rules. Options:
+                        uper, xer, jer, gser. default: xer.
   --indent=INDENT       Specifie the amount of indent of the text of output
-                        file. Options: 0, 2, 4, default: 2.
+                        file. Options: 0, 2, 4. default: 2.
+  -v, --version         Show version information
 ```
 
 ## 示例
