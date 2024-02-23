@@ -100,12 +100,19 @@ def create_parser():
         help='Specifie the amount of indent of the text of output file. Options: {}. default: {}.'.format(', '.join(indent), def_indent),
         choices=indent, default=def_indent
     )
+    p.add_option('-v', '--version', dest='version'
+        help='Show version information',
+        action="store_true", default=False
+    )
     return p
 
 def main():
     parser = create_parser()
     (options, args) = parser.parse_args()
-    if len(args) > 0:
+    if options.version:
+        print('v2xpreconfig: {}'.format(__version__))
+        print('asn1tools: {}'.format(asn1tools.version.__version__))
+    elif len(args) > 0:
         asn1 = Asn1()
         if options.indent:
             asn1.set_indent(options.indent)
