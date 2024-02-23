@@ -80,20 +80,25 @@ class Asn1(object):
                 print(obj.decode())
 
 def create_parser():
-    rules=('xer', 'jer', 'gser', 'uper')
+    rules = ('uper', 'xer', 'jer', 'gser')
+    def_in_rule = rules[0]
+    def_out_rule = rules[1]
+
     indent=('0', '2', '4')
+    def_indent = indent[1]
+
     p = OptionParser(usage='v2xpreconfig [Options] <infile> [outfile]')
     p.add_option('-i', '--in-rule', dest='in_rule', 
-        help='Specifie the input file encoding rules. Options: {}, default: {}.'.format(', '.join(rules), rules[0]),
-        choices=rules, default=rules[0]
+        help='Specifie the input file encoding rules. Options: {}. default: {}.'.format(', '.join(rules), def_in_rule),
+        choices=rules, default=def_in_rule
     )
     p.add_option('-o', '--out-rule', dest='out_rule', 
-        help='Specifie the output file encoding rules. Options: {}, default: {}.'.format(', '.join(rules), rules[3]),
-        choices=rules, default=rules[3]
+        help='Specifie the output file encoding rules. Options: {}. default: {}.'.format(', '.join(rules), def_out_rule),
+        choices=rules, default=def_out_rule
     )
     p.add_option('--indent', dest='indent', 
-        help='Specifie the amount of indent of the text of output file. Options: {}, default: {}.'.format(', '.join(indent), indent[1]),
-        choices=indent, default=indent[1]
+        help='Specifie the amount of indent of the text of output file. Options: {}. default: {}.'.format(', '.join(indent), def_indent),
+        choices=indent, default=def_indent
     )
     return p
 
@@ -106,3 +111,5 @@ def main():
             asn1.set_indent(options.indent)
         asn1.decode(options.in_rule, args[0])
         asn1.encode(options.out_rule, None if len(args) == 1 else args[1])
+    else:
+        parser.print_help()
