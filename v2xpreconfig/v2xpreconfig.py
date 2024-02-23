@@ -100,7 +100,7 @@ def create_parser():
         help='Specifie the amount of indent of the text of output file. Options: {}. default: {}.'.format(', '.join(indent), def_indent),
         choices=indent, default=def_indent
     )
-    p.add_option('-v', '--version', dest='version'
+    p.add_option('-v', '--version', dest='version',
         help='Show version information',
         action="store_true", default=False
     )
