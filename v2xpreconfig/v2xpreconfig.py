@@ -84,15 +84,15 @@ def create_parser():
     indent=('0', '2', '4')
     p = OptionParser(usage='v2xpreconfig [Options] <infile> [outfile]')
     p.add_option('-i', '--in-rule', dest='in_rule', 
-        help='Options: {}, default: {}. Specifie the input file encoding rules.'.format(', '.join(rules), rules[0]),
+        help='Specifie the input file encoding rules. Options: {}, default: {}.'.format(', '.join(rules), rules[0]),
         choices=rules, default=rules[0]
     )
     p.add_option('-o', '--out-rule', dest='out_rule', 
-        help='Options: {}, default: {}. Specifie the output file encoding rules.'.format(', '.join(rules), rules[3]),
+        help='Specifie the output file encoding rules. Options: {}, default: {}.'.format(', '.join(rules), rules[3]),
         choices=rules, default=rules[3]
     )
     p.add_option('--indent', dest='indent', 
-        help='Options: {}, default: {}. Specifie the amount of indent of the text of output file.'.format(', '.join(indent), indent[1]),
+        help='Specifie the amount of indent of the text of output file. Options: {}, default: {}.'.format(', '.join(indent), indent[1]),
         choices=indent, default=indent[1]
     )
     return p
