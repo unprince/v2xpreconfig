@@ -1,5 +1,6 @@
 from .v2xpreconfig import main
 
+__version__ = '1.0.0'
 
 # import v2xpreconfig
 
