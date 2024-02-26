@@ -21,7 +21,8 @@ setup(
         ]
     },
     install_requires=[
-        'asn1tools'
+        'asn1tools',
+        'python_version >= "3.6"'
     ],
     entry_points={
         'console_scripts': ['v2xpreconfig=v2xpreconfig.__init__:main']
