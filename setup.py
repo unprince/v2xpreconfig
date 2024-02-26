@@ -3,7 +3,11 @@
 from setuptools import setup
 from setuptools import find_packages
 import re
+import sys
 
+
+if sys.version_info < (3, 6):
+    sys.exit("Python 3.6 or newer is required.")
 
 def find_version():
     return re.search(r"^__version__ = '(.*)'$",
